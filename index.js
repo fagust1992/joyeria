@@ -14,7 +14,7 @@ const reporte = async (req, res, next) => {
     `
     hoy ${new Date()}
     query recibida en la ruta ${url}
-    con los parámetros:
+    y los parámetros:
   `,
     parametros
   );
