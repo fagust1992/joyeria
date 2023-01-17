@@ -27,24 +27,26 @@ const obtenerJoyas = async (x) => {
 };
 
 const HATEOAS = (joyas_inventario) => {
-  const results = joyas_inventario.map((joya) => {
-    return {
-      name: joya.nombre,
-      href: `/joyas/joya/${j.id}`,
-    };
-  });
+  if (joyas_inventario.length > 0) {
+    const results = joyas_inventario.map((joya) => {
+      return {
+        name: joya.nombre,
+        href: `/joyas/joya/${joya.id}`,
+      };
+    });
 
-  const total_Joyas = joyas_inventario.length;
-  const total_Stock = joyas_inventario.reduce(
-    (total, joya) => total + joya.stock,
-    0
-  );
-  const HATEOAS = {
-    total_Joyas,
-    total_Stock,
-    results,
-  };
-  return HATEOAS;
+    const total_Joyas = joyas_inventario.length;
+    const total_Stock = joyas_inventario.reduce(
+      (total, joya) => total + joya.stock,
+      0
+    );
+    const HATEOAS = {
+      total_Joyas,
+      total_Stock,
+      results,
+    };
+    return HATEOAS;
+  }
 };
 
 const obtenerjoyasPorFiltros = async (a) => {
